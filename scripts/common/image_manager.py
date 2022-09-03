@@ -47,7 +47,7 @@ def load_img(path_to_img):
     return img
 
 
-def save_image(image, results_dir, mode, content_weight, style_weight):
+def save_image(image, results_dir):
     """Save image to global defined path
 
     :param image: Image stored as tensor
@@ -55,12 +55,9 @@ def save_image(image, results_dir, mode, content_weight, style_weight):
 
     """
 
+    os.makedirs(results_dir, exist_ok=True)
     files = os.listdir(results_dir)
-    folder_name = "-".join(mode)
-    folder_path = os.path.join(results_dir, folder_name)
-    os.makedirs(folder_path, exist_ok=True)
-    files = os.listdir(folder_path)
-    file_pattern = f"-stylized-{content_weight}-{style_weight}.png"
+    file_pattern = f"-stylized.png"
     counter = 1
     filename = "n0" + file_pattern
     while filename in files:
@@ -68,5 +65,5 @@ def save_image(image, results_dir, mode, content_weight, style_weight):
         counter += 1
 
     tensor_to_image(image).save(
-        os.path.join(results_dir, folder_name, filename)
+        os.path.join(results_dir, filename)
     )

@@ -92,7 +92,7 @@ def parse_arguments() -> argparse.Namespace:
         "-v", "--verbose",
         help="Optional. Change log level",
         choices=("CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG", "NOTSET"),
-        default="DEBUG",
+        default="INFO",
         dest="verbose"
     )
 

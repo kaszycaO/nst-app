@@ -63,7 +63,15 @@ def get_model(network_name):
         style_layers = ["conv1", 
                         "conv2",
                         "conv3"]
-        model = tf.keras.models.load_model(os.path.join(drive_path, "models", "my_own_conv2021_56.h5"))
+        model = tf.keras.models.load_model(
+            os.path.join(
+                os.path.dirname(os.path.realpath(__file__)),
+                "..",
+                "..",
+                "models", 
+                "my_own_conv2021_56.h5"
+            )
+        )
 
         return {"net": model, 
                 "clayers": content_layers,

@@ -1,4 +1,7 @@
 import logging
+
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # disable tf prints
 import tensorflow as tf
 
 from scripts.common.image_manager import tensor_to_image
@@ -66,13 +69,10 @@ def train(
 ):
     """Main function for training"""
     start = time.time()
-    step = 0
     opt = tf.optimizers.Adam(learning_rate=0.02, beta_1=0.99, epsilon=1e-1)
     logging.info("Training in progress...")
-    for _ in tqdm(range(epochs)):
-        for _ in range(steps_per_epoch):
-            step += 1
-            train_step(result_image, nst, opt)
+    for _ in tqdm(range(epochs * steps_per_epoch)):
+        train_step(result_image, nst, opt)
     end = time.time()
     print("Total time: {:.1f}".format(end-start))
     return result_image
