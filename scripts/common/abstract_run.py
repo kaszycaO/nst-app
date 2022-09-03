@@ -13,7 +13,10 @@ class Run:
             self.args.initial_result,
             self.args.input_image, 
             self.args.style_image,
-            self.args.gram_matrix_type
+            self.args.gram_matrix_type,
+            self.args.alpha,
+            self.args.beta,
+            self.args.mode
         )
         return train(
             result_image,

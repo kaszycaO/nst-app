@@ -1,10 +1,19 @@
 import tensorflow as tf
+import logging
 
 
 class NstModel:
 
-  def __init__(self, content_img, style_img, networks, mode,
-               gram_matrix_type="custom"):
+  def __init__(
+    self,
+    content_img,
+    style_img,
+    networks,
+    mode,
+    gram_matrix_type="custom",
+    alpha=1e-2,
+    beta=1e4
+  ):
  
     """ Nst model
 
@@ -24,7 +33,18 @@ class NstModel:
     self.style = networks["style"]
     self.content = networks["content"]
 
-    print("Style: ",  self.style["net"].name, "content: ",  self.content["net"].name)
+    self.alpha = alpha
+    self.beta = beta
+
+    logging.info(
+      f"Style: {self.style['net'].name} content: {self.content['net'].name}"
+    )
+    logging.info(
+      f"Params: {type(content_img)}, {type(style_img)}, {networks}, {mode}, {gram_matrix_type}"
+    )
+    logging.info(
+      f"Alpha: {alpha}, Beta: {beta}"
+    )
 
     self.num_content_layers = len(self.content["clayers"])
     self.num_style_layers = len(self.style["slayers"])
@@ -92,8 +112,8 @@ class NstModel:
 
   def calculate_loss(self, outputs):
 
-    style_weight = 10e-1
-    content_weight = 10e-2
+    style_weight = self.alpha
+    content_weight = self.beta
     style_outputs = outputs['style']
     content_outputs = outputs['content']
 

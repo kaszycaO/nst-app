@@ -1,3 +1,4 @@
+import logging
 import tensorflow as tf
 
 from scripts.common.image_manager import tensor_to_image
@@ -7,8 +8,17 @@ from .model_manager import prepare_models
 import time
 from .training import train_step
 
-def prepare_model_and_data(initial_result, content_image, style_image, 
-                           gram_matrix_type):
+from tqdm import tqdm
+
+def prepare_model_and_data(
+    initial_result,
+    content_image,
+    style_image, 
+    gram_matrix_type,
+    alpha,
+    beta,
+    mode
+):
     """Prepare initial result and NstModel
     
     :param initial_result: Initial result generation type, content or noise
@@ -34,8 +44,16 @@ def prepare_model_and_data(initial_result, content_image, style_image,
         raise Exception(f"Invalid initial_result {initial_result}!"+
                         "Available options are: noise, content")
         
-    networks = prepare_models()
-    nst = NstModel(content_image, style_image, networks, gram_matrix_type)
+    networks = prepare_models(mode)
+    nst = NstModel(
+        content_img=content_image,
+        style_img=style_image,
+        networks=networks,
+        mode=mode,
+        gram_matrix_type=gram_matrix_type,
+        alpha=alpha,
+        beta=beta
+    )
     return result_image, nst
 
 
@@ -49,15 +67,12 @@ def train(
     """Main function for training"""
     start = time.time()
     step = 0
-    for n in range(epochs):
-        for m in range(steps_per_epoch):
+    opt = tf.optimizers.Adam(learning_rate=0.02, beta_1=0.99, epsilon=1e-1)
+    logging.info("Training in progress...")
+    for _ in tqdm(range(epochs)):
+        for _ in range(steps_per_epoch):
             step += 1
-            train_step(result_image, nst)
-            print(".", end="")
-        # clear_output(wait=True)
-        print(f"Train step: {step}.")
-        # if display_progress:
-        #     display.display(tensor_to_image(result_image))
+            train_step(result_image, nst, opt)
     end = time.time()
     print("Total time: {:.1f}".format(end-start))
     return result_image

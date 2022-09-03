@@ -5,10 +5,7 @@ from keras.applications.vgg19 import VGG19
 
 drive_path = ""
 
-def prepare_models(mode=None):
-
-    if not mode:  # TODO fix it
-        mode = ["SAME", "VGG"]  # content and style networks are VGG19
+def prepare_models(mode):
     models = {"content": None, "style": None}
     if isinstance(mode, list):
         if len(mode) == 2:

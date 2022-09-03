@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import numpy as np
 
-from .image_manager import tensor_to_image
+from ..common.image_manager import tensor_to_image
 
 
 def show_images(**data):

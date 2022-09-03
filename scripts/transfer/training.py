@@ -1,10 +1,8 @@
 import tensorflow as tf
 
 @tf.function()
-def train_step(image, nst):
+def train_step(image, nst, opt):
     total_variation_weight = 60
-
-    opt = tf.optimizers.Adam(learning_rate=0.02, beta_1=0.99, epsilon=1e-1)
     with tf.GradientTape() as tape:
         outputs = nst.process_input(image)
         loss = nst.calculate_loss(outputs)

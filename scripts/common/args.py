@@ -24,6 +24,7 @@ class ArgumentsManager:
         self.gram_matrix_type = "custom"
         self.epochs = 50
         self.steps_per_epoch = 10
+        self.mode = ["SAME", "VGG"]  # content and style networks are VGG19
 
         self.input_image = load_img(self.input_path)
         self.style_image = load_img(self.style_path)
