@@ -1,3 +1,6 @@
+from asyncio.log import logger
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 import numpy as np
 import PIL
@@ -64,6 +67,7 @@ def save_image(image, results_dir):
         filename = "n" + str(counter) + file_pattern
         counter += 1
 
+    logger.info(f"Saving image to {results_dir}/{filename}")
     tensor_to_image(image).save(
         os.path.join(results_dir, filename)
     )

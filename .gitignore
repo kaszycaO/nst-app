@@ -131,3 +131,4 @@ dmypy.json
 # my stuff
 .vscode
 /output
+models/vgg19.h5

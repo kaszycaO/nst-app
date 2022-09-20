@@ -1,5 +1,7 @@
 import os
 from .image_manager import load_img
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 import tensorflow as tf
 import logging
 
@@ -24,7 +26,7 @@ class ArgumentsManager:
         self.gram_matrix_type = "custom"
         self.epochs = 50
         self.steps_per_epoch = 10
-        self.mode = ["SAME", "MYCONV_56"]  # content and style networks are VGG19
+        self.mode = ["MYCONV_56", "VGG"]  # content and style networks are VGG19
 
         self.input_image = load_img(self.input_path)
         self.style_image = load_img(self.style_path)

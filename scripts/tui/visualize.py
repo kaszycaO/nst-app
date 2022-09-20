@@ -1,4 +1,7 @@
+from asyncio.log import logger
 import matplotlib.pyplot as plt
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 import tensorflow as tf
 import numpy as np
 
@@ -34,6 +37,7 @@ def compare_results(content_image, style_image, result_image):
     :type result_image: tensorflow.python.framework.ops.EagerTensor
     """
 
+    logger.info("Comparing results!")
     fig, (ax, ax1, ax2) = plt.subplots(1, 3, figsize=(20, 10))
     ax.imshow(tensor_to_image(content_image))
     ax.set_title('Content')
