@@ -1,7 +1,4 @@
 import logging
-
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # disable tf prints
 import tensorflow as tf
 
 from scripts.common.image_manager import tensor_to_image

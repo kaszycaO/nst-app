@@ -132,3 +132,4 @@ dmypy.json
 .vscode
 /output
 models/vgg19.h5
+/demo

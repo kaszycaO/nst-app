@@ -1,6 +1,6 @@
 from .args import ArgumentsManager
 from scripts.transfer.run_transfer import prepare_model_and_data, train
-
+import os
 import tensorflow as tf
 
 class Run:

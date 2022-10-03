@@ -4,9 +4,7 @@ from scripts.common.args import ArgumentsManager
 from scripts.common.image_manager import save_image
 from .visualize import compare_results
 
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
-import tensorflow as tf
+from scripts.common import tf
 
 class RunTUI(Run):
 

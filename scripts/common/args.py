@@ -1,7 +1,5 @@
 import os
 from .image_manager import load_img
-
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 import tensorflow as tf
 import logging
 

@@ -1,5 +1,4 @@
 import argparse
-from email.policy import default
 import logging
 import sys
 import os
