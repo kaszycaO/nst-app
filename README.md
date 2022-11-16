@@ -12,6 +12,9 @@ Finally, the most important results are presented, which allow making an observa
 
 # About application
 
+Create env: `conda env create -f environment.yml`
+
+
 `python NST.py -h`
 
 `python NST.py -h [src_image] [style_image] -t`
@@ -24,7 +27,7 @@ Tested on Ubuntu 20.04 and 22.04
  - python3 (tested 3.8.5)
  - anaconda (tested 4.9.2)
  - CUDA for GPU (https://developer.nvidia.com/cuda-zone)
- - requirements.txt
+ - environment.yml
  
 ___
 
@@ -40,6 +43,8 @@ Na zakończenie zaprezentowano najważniejsze rezultaty, na podstawie których p
 
 # O aplikacji
 
+Tworzenie środowiska: `conda env create -f environment.yml`
+
 `python NST.py -h`
 
 `python NST.py -h [src_image] [style_image] -t`
@@ -50,7 +55,7 @@ Obecnie dostępna tylko wersja TUI.
  - python3 (tested 3.8.5)
  - anaconda (tested 4.9.2)
  - CUDA for GPU (https://developer.nvidia.com/cuda-zone)
- - requirements.txt
+ - environment.yml
 
 ---
 **If you want to use my code in your thesis/work, please leave any sign :)**
