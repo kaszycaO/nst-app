@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# my stuff
+.vscode
+/output
+models/vgg19.h5
+/demo
