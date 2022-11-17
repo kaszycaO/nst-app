@@ -62,5 +62,13 @@ Obecnie dostępna tylko wersja TUI.
 ___
 
 
+Example results:
+
+![image](results/magenta-comp.png)
+
+*Google Magenta results compared to my implementation. Results are splited into a few groups, from the left: style image, content image, Google Magenta's result and my implementation's results.*
+
+___
+
 All Rights Reserved
 Copyright (c) by Oliwier Kaszyca 2022
